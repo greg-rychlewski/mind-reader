@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="index.css">
+	</head>
+	<body>
+		<div id="main-container">
+			<div id="gameover-group">
+				<h3 id="winner-message"></h3>
+				<div id="new-game" onclick="newGame()">Play Again</div>	
+			</div>
+
+			<div id="computer" class="player-group">
+				<div class="sphere">
+					<div id="computer-cover" class="cover"></div>
+					<div id="computer-shadow" class="shadow"></div>
+				</div>
+			</div>
+
+			<div id="human" class="player-group">
+				<div class="sphere">
+					<div id="human-cover" class="cover"></div>
+					<div id="human-shadow" class="shadow"></div>
+				</div>
+			</div>
+
+			<div id="prediction-group">
+				<div id="toggle-prediction" onclick="togglePrediction()">
+					Show AI's Next Prediction
+				</div>
+				<div id="next-predicted-value"></div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="ai.js"></script>
+		<script type="text/javascript" src="application.js"></script>
+	</body>
+</html>
