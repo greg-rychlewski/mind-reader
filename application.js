@@ -43,7 +43,6 @@ function disableGame(){
 
 function resetGame(){
 	ai.reset();
-	computer.prediction = null;
 	computer.wins = 0;
 	human.wins = 0;
 	hideWinnerMessage();
@@ -99,6 +98,7 @@ function formatPrediction(value){
 
 function updatePrediction(){
 	if (gameOver()){
+		computer.prediction = null;
 		nextPredictionDiv.innerHTML = "";
 	}else{
 		computer.prediction = ai.predict();
