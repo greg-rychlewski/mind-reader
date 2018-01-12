@@ -38,7 +38,7 @@ function enableGame(){
 }
 
 function disableGame(){
-	document.onkeydown = null;
+	document.onkeyup = null;
 }
 
 function resetGame(){
