@@ -24,32 +24,31 @@
 /* Messages */
 #message-container{
 	position: relative;
+	display: inline-block;
 	height: 30%;
-	width: 100%;
 	top: 10%;
+	padding-left: 15%;
+	padding-right: 15%;
 	-webkit-transform: translateY(-20%);
 	-moz-transform: translateY(-20%);
 	-ms-transform: translateY(-20%);
 }
 
-#rules{
-	position: relative;
-	width: 36%;
-	left: 50%;
-	transform: translateX(-50%);
-	-webkit-transform: translateX(-50%);
-	-moz-transform: translateX(-50%);
-	-ms-transform: translateX(-50%);
-}
-
-#rules ul{
+#rules ul:not(last-child){
+	list-style-type: none;
 	text-align: justify;
 	font-size: 0.9em;
-	list-style-type: none;
 	padding-top: 16px;
 }
 
-#rules ul li{
+#rules ul:last-child{
+	list-style-type: none;
+	text-align: justify;
+	font-size: 0.9em;
+	padding-top: 12px;
+}
+
+#rules ul li:not(last-child){
 	padding-bottom: 8px;
 }
 
@@ -72,7 +71,7 @@
 
 #toggle-prediction{
 	position: relative;
-	width: 20%;
+	width: 250px;
 	left: 50%;
 	transform: translateX(-50%);
 	-webkit-transform: translateX(-50%);
@@ -108,7 +107,7 @@
 	position: relative;
 	display: inline-block;
 	height: 100%;
-	width: 15%;
+	width: 150px
 }
 
 .sphere{
@@ -176,4 +175,104 @@
 	-webkit-transform: rotateX(90deg) translateZ(-75px) translateX(-50%);
 	-moz-transform: rotateX(90deg) translateZ(-75px) translateX(-50%);
 	-ms-transform: rotateX(90deg) translateZ(-75px) translateX(-50%);
+}
+
+/* Responsiveness */
+@media screen and (max-height: 440px){
+	/* Messages */
+	#message-container{
+		position: relative;
+		display: inline-block;
+		height: 20%;
+		top: 4%;
+		padding-left: 10%;
+		padding-right: 10%;
+		-webkit-transform: translateY(-2%);
+		-moz-transform: translateY(-2%);
+		-ms-transform: translateY(-2%);
+	}
+
+	#rules ul{
+		display: none;
+	}
+
+	/* AI prediction display */
+	#prediction-container{
+		position: relative;
+		height: 30%;
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 443px){
+	/* Messages */
+	.hide-small-window{
+		display: none;
+	}
+
+	#rules ul:not(last-child){
+		list-style-type: none;
+		text-align: justify;
+		font-size: 0.78em;
+		padding-top: 7px;
+	}
+
+	#rules ul:last-child{
+		list-style-type: none;
+		text-align: justify;
+		font-size: 0.78em;
+		padding-top: 5px;
+	}
+
+	#rules ul li:not(last-child){
+		padding-bottom: 2px;
+	}
+
+	/* Player score display */
+	.player-group{
+		position: relative;
+		display: inline-block;
+		height: 100%;
+		width: 120px
+	}
+}
+
+@media screen and (max-height: 590px){
+	.hide-small-window{
+		display: none;
+	}
+}
+
+@media screen and (min-width: 444) and (max-width: 820px){
+	/* General */
+	h3{
+		font-size: 1.05em;
+	}
+
+	/* Messages */
+	#rules ul:not(last-child){
+		list-style-type: none;
+		text-align: justify;
+		font-size: 0.78em;
+		padding-top: 14px;
+	}
+
+	#rules ul:last-child{
+		list-style-type: none;
+		text-align: justify;
+		font-size: 0.78em;
+		padding-top: 10px;
+	}
+
+	#rules ul li:not(last-child){
+		padding-bottom: 7px;
+	}
+
+	/* AI prediction display*/
+	#prediction-container{
+		position: relative;
+		height: 20%;
+		width: 100%;
+		font-size: 0.93em;
+	}
 }

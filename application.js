@@ -34,7 +34,7 @@ var toggleMessage = {
 
 function enableGame(){
 	updatePrediction();
-	document.onkeydown = nextMove;
+	document.onkeyup = nextMove;
 }
 
 function disableGame(){
