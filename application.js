@@ -71,7 +71,7 @@ function showWinnerMessage(){
 
 function hideWinnerMessage(){
 	gameoverDiv.style.display = "none";
-	rulesDiv.style.display = "block";
+	rulesDiv.style.display = "inline-block";
 }
 
 function togglePrediction(){
