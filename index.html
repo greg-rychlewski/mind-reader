@@ -4,26 +4,37 @@
 	</head>
 	<body>
 		<div id="main-container">
-			<div id="gameover-group">
-				<h3 id="winner-message"></h3>
-				<div id="new-game" onclick="newGame()">Play Again</div>	
-			</div>
-
-			<div id="computer" class="player-group">
-				<div class="sphere">
-					<div id="computer-cover" class="cover"></div>
-					<div id="computer-shadow" class="shadow"></div>
+			<div id="message-container">
+				<div id="rules">
+					<h3>Mind Reader</h3>
+					<ul>
+						<li>Press the left and right arrow keys and the AI will try to predict your move</li>
+						<li>The AI's ball (left, grey) shrinks every time it predicts correctly</li>
+						<li>Your ball (right, blue) shrinks every time you fool the AI</li>
+						<li>The first to make their ball disappear wins</li>
+					</ul>
+				</div>
+				<div id="gameover">
+					<h3 id="winner"></h3>
+					<div id="new-game" onclick="newGame()">Play Again</div>
 				</div>
 			</div>
 
-			<div id="human" class="player-group">
-				<div class="sphere">
-					<div id="human-cover" class="cover"></div>
-					<div id="human-shadow" class="shadow"></div>
+			<div id="player-container">
+				<div id="computer" class="player-group">
+					<div id="computer-sphere" class="sphere">
+						<div id="computer-shadow" class="shadow"></div>
+					</div>
+				</div>
+
+				<div id="human" class="player-group">
+					<div id="human-sphere" class="sphere">
+						<div id="human-shadow" class="shadow"></div>
+					</div>
 				</div>
 			</div>
 
-			<div id="prediction-group">
+			<div id="prediction-container">
 				<div id="toggle-prediction" onclick="togglePrediction()">
 					Show AI's Next Prediction
 				</div>

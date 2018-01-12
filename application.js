@@ -4,24 +4,27 @@
 //                                           //
 ///////////////////////////////////////////////
 
+var maxWins = 100;
+var rulesDiv = document.getElementById("rules");
+var gameoverDiv = document.getElementById("gameover");
+var winnerDiv = document.getElementById("winner");
+var nextPredictionDiv = document.getElementById("next-predicted-value");
+var togglePredictionDiv = document.getElementById("toggle-prediction");
 var computer = {
-	scoreDiv: document.getElementById("computer-score"),
-	coverDiv: document.getElementById("computer-cover"),
+	sphereDiv: document.getElementById("computer-sphere"),
 	shadowDiv: document.getElementById("computer-shadow"),
 	prediction: null,
 	wins: 0,
 };
 var human = {
-	coverDiv: document.getElementById("human-cover"),
+	sphereDiv: document.getElementById("human-sphere"),
 	shadowDiv: document.getElementById("human-shadow"),
 	wins: 0,
 };
-var gameoverGroupDiv = document.getElementById("gameover-group");
-var winnerMessageDiv = document.getElementById("winner-message");
-var togglePredictionButton = document.getElementById("toggle-prediction");
-var nextPredictionDiv = document.getElementById("next-predicted-value");
-var showPrediction = false;
-var maxWins = 100;
+var toggleMessage = {
+	show: "Hide AI's Next Prediction",
+	hide: "Show AI's Next Prediction"
+}
 
 ///////////////////////////////////////////////
 //                                           //
@@ -38,35 +41,15 @@ function disableGame(){
 	document.onkeydown = null;
 }
 
-function showWinnerMessage(){
-	if (computer.wins == maxWins){
-		updateWinnerMessage("AI Wins");
-	}else if (human.wins == maxWins){
-		updateWinnerMessage("You Win");
-	}
-
-	gameoverGroupDiv.style.display = "block";
-}
-
-function hideWinnerMessage(){
-	gameoverGroupDiv.style.display = "none";
-}
-
-function updateWinnerMessage(msg){
-	winnerMessageDiv.innerHTML = msg;
-}
-
 function resetGame(){
-	hideWinnerMessage();
 	ai.reset();
-	computer.coverDiv.style.height = "100%";
-	computer.shadowDiv.style.width = "0%";
-	human.coverDiv.style.height = "100%";
-	human.shadowDiv.style.width = "0%";
 	computer.prediction = null;
 	computer.wins = 0;
 	human.wins = 0;
-	if (showPrediction){
+	hideWinnerMessage();
+	resizeSphere(human, 100);
+	resizeSphere(computer, 100);
+	if (togglePredictionDiv.innerHTML == toggleMessage.show){
 		togglePrediction()
 	}
 }
@@ -74,6 +57,34 @@ function resetGame(){
 function newGame(){
 	resetGame();
 	enableGame();
+}
+
+function showWinnerMessage(){
+	if (computer.wins == maxWins){
+		winnerDiv.innerHTML = "AI Wins";
+	}else if (human.wins == maxWins){
+		winnerDiv.innerHTML = "You Win";
+	}
+
+	rulesDiv.style.display = "none";
+	gameoverDiv.style.display = "block";
+}
+
+function hideWinnerMessage(){
+	gameoverDiv.style.display = "none";
+	rulesDiv.style.display = "block";
+}
+
+function togglePrediction(){
+	var showPrediction = (togglePredictionDiv.innerHTML == toggleMessage.show);
+
+	if (showPrediction){
+		togglePredictionDiv.innerHTML = toggleMessage.hide;
+		nextPredictionDiv.style.opacity = 0;
+	}else{
+		togglePredictionDiv.innerHTML = toggleMessage.show;
+		nextPredictionDiv.style.opacity = 1;
+	}
 }
 
 function formatPrediction(value){
@@ -87,33 +98,37 @@ function formatPrediction(value){
 }
 
 function updatePrediction(){
-	computer.prediction = ai.predict();
-	nextPredictionDiv.innerHTML = formatPrediction(computer.prediction);
-}
-
-function togglePrediction(){
-	if (showPrediction){
-		togglePredictionButton.innerHTML = "Show AI's Next Prediction";
-		nextPredictionDiv.style.opacity = 0;
+	if (gameOver()){
+		nextPredictionDiv.innerHTML = "";
 	}else{
-		togglePredictionButton.innerHTML = "Hide AI's Next Prediction";
-		nextPredictionDiv.style.opacity = 1;
+		computer.prediction = ai.predict();
+		nextPredictionDiv.innerHTML = formatPrediction(computer.prediction);
 	}
-
-	showPrediction = !showPrediction;
 }
 
-function increaseScore(player){
-	player.wins++;
-	player.coverDiv.style.height = (100 - player.wins) + "%";
-	player.shadowDiv.style.width = Math.min(2 * player.wins, 100) + "%";
+///////////////////////////////////////////////
+//                                           //
+//                Player Move                //
+//                                           //
+///////////////////////////////////////////////
+
+function gameOver(){
+	return human.wins == maxWins || computer.wins == maxWins
+}
+
+function resizeSphere(player, newSize){
+	player.sphereDiv.style.width = newSize + "px";
+	player.sphereDiv.style.height = newSize + "px";
+	player.shadowDiv.style.width = newSize + "%";
 }
 
 function updateScore(humanMove, predictedMove){
 	if (humanMove == predictedMove){
-		increaseScore(computer);
+		computer.wins++;
+		resizeSphere(computer, 100 - computer.wins);
 	}else{
-		increaseScore(human);
+		human.wins++;
+		resizeSphere(human, 100 - human.wins);
 	}
 }
 
@@ -123,29 +138,22 @@ function processMove(key){
 	}else if (key == "39"){
 		return "R";
 	}else{
-		return;
+		return false;
 	}
 }
 
-function gameOver(){
-	return human.wins == maxWins || computer.wins == maxWins
-}
-
-///////////////////////////////////////////////
-//                                           //
-//                Player Move                //
-//                                           //
-///////////////////////////////////////////////
-
 function nextMove(e){
-	var humanMove;
-
 	disableGame();
-	humanMove = processMove(e.keyCode);
-	updateScore(humanMove, computer.prediction);
-	ai.update(humanMove);
 
+	var humanMove = processMove(e.keyCode);
+	
+	if (humanMove){
+		updateScore(humanMove, computer.prediction);
+		ai.update(humanMove);
+	}
+	
 	if (gameOver()){
+		updatePrediction();
 		showWinnerMessage();
 	}else{
 		enableGame();
