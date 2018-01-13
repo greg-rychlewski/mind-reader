@@ -5,7 +5,6 @@
 	padding: 0;
 	font-family: "Helvetica";
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-	color: #444;
 	text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.05);
 	-webkit-touch-callout: none; 
 	-webkit-user-select: none;
@@ -14,110 +13,103 @@
 	user-select: none; 
 }
 
+p, h2, span{
+	color: #444;
+}
+
+p, span{
+	font-size: 1.1em;
+}
+
+h2{
+	font-weight: 400;
+}
+
 #main-container{
 	position: relative;
 	text-align: center;
-	height: 100%;
-	width: 100%;
 }
 
-/* Messages */
-#message-container{
+/* Rules */
+#rules-container{
 	position: relative;
-	display: inline-block;
-	height: 30%;
-	padding-top: 10px;
-	padding-left: 15%;
-	padding-right: 15%;
+	width: 90%;
+	max-width: 800px;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	margin-top: 45px;
 }
 
-#rules ul:not(last-child){
-	list-style-type: none;
+#rules-container h2{
+	font-size: 2em;
+}
+
+#rules-container p{
 	text-align: justify;
-	font-size: 0.9em;
-	padding-top: 16px;
+	margin-top: 45px;
 }
 
-#rules ul:last-child{
-	list-style-type: none;
-	text-align: justify;
-	font-size: 0.9em;
-	padding-top: 12px;
-}
-
-#rules ul li:not(last-child){
-	padding-bottom: 8px;
-}
-
-#gameover{
+/* Gameover */
+#gameover-container{
 	display: none;
+	margin-top: 60px;
+	margin-bottom: 30px;
+}
+
+#gameover-container h3{
+	font-weight: 400;
 }
 
 #new-game{
-	font-size: 0.9em;
-	margin-top: 8px;
+	font-size: 1.1em;
+	margin-top: 15px;
 	cursor: pointer;
 }
 
 /* AI prediction display */
 #prediction-container{
 	position: relative;
-	height: 20%;
-	width: 100%;
-}
-
-#toggle-prediction{
-	position: relative;
-	width: 250px;
 	left: 50%;
 	transform: translateX(-50%);
 	-webkit-transform: translateX(-50%);
 	-moz-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
-	border: 1px solid black;
-	border-radius: 10px;
-	padding: 5px;
-	box-shadow: 0px 0px 0.5px 1px rgba(0, 0, 0, 0.4);
+	width: 250px;
+	padding: 15px 20px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	box-shadow: 0px 1.5px 5px 0px rgba(0, 0, 0, 0.2);
+	margin-top: 60px;
+	margin-bottom: 30px;
 	cursor: pointer;
 }
 
-#next-predicted-value{
-	position: relative;
-	width: 20%;
-	left: 50%;
-	transform: translateX(-50%);
-	-webkit-transform: translateX(-50%);
-	-moz-transform: translateX(-50%);
-	-ms-transform: translateX(-50%);
-	margin-top: 5px;
-	opacity: 0;
+#prediction-container #next-prediction{
+	display: none;
 }
+
+#prediction-container:hover #next-prediction{
+	display: inline;
+}
+
+#prediction-container:hover #button-label{
+	display: none;
+}
+
 
 /* Player score display */
 #player-container{
 	position: relative;
-	height: 50%;
-	width: 100%;
+	margin-top: 100px;
 }
 
 .player-group{
 	position: relative;
 	display: inline-block;
-	height: 100%;
-	width: 150px
-}
-
-.sphere{
-	position: relative;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	-webkit-transform: translate(-50%, -50%);
-	-moz-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
+	width: 150px;
 	perspective: 500px;
 	-webkit-perspective: 500px;
 	-moz-perspective: 500px;
@@ -128,110 +120,73 @@
   	-ms-perspective-origin: 100% 100%;
 }
 
-#computer .sphere{
-	background: radial-gradient(circle at 50% 120%, #f1f2f2, #e7e7e7 10%, #939393 80%, #454545 100%);
-	background: -webkit-radial-gradient(circle at 50% 120%, #f1f2f2, #e7e7e7 10%, #939393 80%, #454545 100%);
-	background: -moz-radial-gradient(circle at 50% 120%, #f1f2f2, #e7e7e7 10%, #939393 80%, #454545 100%);
-	background: -ms-radial-gradient(circle at 50% 120%, #f1f2f2, #e7e7e7 10%, #939393 80%, #454545 100%);
-}
-
-#human .sphere{
-	background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
-	background: -webkit-radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
-	background: -moz-radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
-	background: -ms-radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
-}
-
-.sphere:before {
-	content: "";
-	position: absolute;
-	top: 1%;
-	left: 5%;
-	width: 90%;
-	height: 90%;
+.sphere{
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	width: 100px;
+	height: 100px;
 	border-radius: 50%;
-	background: radial-gradient(circle at 50% 0px, #fff, rgba(255, 255, 255, 0) 58%);
-	background: -webkit-radial-gradient(circle at 50% 0px, #fff, rgba(255, 255, 255, 0) 58%);
-	background: -moz-radial-gradient(circle at 50% 0px, #fff, rgba(255, 255, 255, 0) 58%);
-	background: -ms-radial-gradient(circle at 50% 0px, #fff, rgba(255, 255, 255, 0) 58%);
-	filter: blur(5px);
+	overflow: hidden;
+}
+
+.fill{
+	position: absolute;
+	bottom: 0%;
+	height: 0%;
+	width: 100%;
+}
+
+#computer .fill{
+	background-color: #888;
+}
+
+#human .fill{
+	background-color: #055194;
+}
+
+.cover{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(circle at 50% 0px, rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0.1));
+	background: -webkit-radial-gradient(circle at 50% 0px, rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0.1));
+	background: -moz-radial-gradient(circle at 50% 0px, rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0.1));
+	background: -ms-radial-gradient(circle at 50% 0px, rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0.1));
 }
 
 .shadow{
-	position: absolute;
-	top: 0%;
+	position: relative;
 	left: 50%;
-	height: 100%;
+	height: 100px;
 	width: 100%;
 	border-radius: 50%;
 	background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
 	background: -webkit-radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
 	background: -moz-radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
 	background: -ms-radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
-	transform: rotateX(90deg) translateZ(-75px) translateX(-50%);
-	-webkit-transform: rotateX(90deg) translateZ(-75px) translateX(-50%);
-	-moz-transform: rotateX(90deg) translateZ(-75px) translateX(-50%);
-	-ms-transform: rotateX(90deg) translateZ(-75px) translateX(-50%);
+	transform: rotateX(90deg) translateX(-50%);
+	-webkit-transform: rotateX(90deg) translateX(-50%);
+	-moz-transform: rotateX(90deg) translateX(-50%);
+	-ms-transform: rotateX(90deg) translateX(-50%);
 }
 
 /* Responsiveness */
-@media screen and (max-width: 772px){
-	/* Messages */
-	h3{
-		font-size: 1.05em;
-	}
-
-	#rules ul:not(last-child){
-		list-style-type: none;
-		text-align: justify;
-		font-size: 0.8em;
-		padding-top: 14px;
-	}
-
-	#rules ul:last-child{
-		list-style-type: none;
-		text-align: justify;
-		font-size: 0.8em;
-		padding-top: 10px;
-	}
-
-	#rules ul li:not(last-child){
-		padding-bottom: 6px;
-	}
-
-	/* AI prediction display */
-	#prediction-container{
-		position: relative;
-		height: 20%;
-		width: 100%;
-		font-size: 0.9em;
-	}
-}
-
-@media screen and (max-width: 685px){
-	.optional-rule{
-		display: none;
-	}
-}
-
-@media screen and (max-width: 322px){
+@media screen and (max-width: 304px){
 	.player-group{
 		position: relative;
 		display: inline-block;
-		height: 100%;
-		width: 130px
-	}
-}
-
-
-@media screen and (max-height: 528px){
-	.optional-rule{
-		display: none;
-	}
-}
-
-@media screen and (max-height: 442px){
-	#rules ul{
-		display: none;
-	}
+		width: 125px;
+		perspective: 500px;
+		-webkit-perspective: 500px;
+		-moz-perspective: 500px;
+		-ms-perspective: 500px;
+	  	perspective-origin: 100% 100%;
+	  	-webkit-perspective-origin: 100% 100%;
+	  	-moz-perspective-origin: 100% 100%;
+	  	-ms-perspective-origin: 100% 100%;
+	}	
 }

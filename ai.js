@@ -6,7 +6,7 @@
 
 var ai = (function (){
 	// Game variables
-	var learnRate = 0.13;
+	var learnRate = 0.15;
 	var moves = ["L", "R"];
 	var points = {"L": -1, "R": 1};
 	var gameTree = new Tree("", null);

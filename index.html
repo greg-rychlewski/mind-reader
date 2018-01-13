@@ -4,45 +4,39 @@
 	</head>
 	<body>
 		<div id="main-container">
-			<div id="message-container">
-				<div id="rules">
-					<h3>Mind Reader</h3>
-					<ul>
-						<li>Press the left and right arrow keys. The AI will try to predict your next key stroke.</li>
-						<li class="optional-rule">The AI's ball (grey) shrinks if it predicts correctly. Your ball (blue) shrinks if it's wrong.</li>
-						<li class="optional-rule">The first to make their ball completely disappear wins.</li> 
-						<li class="optional-rule"> You may start pressing the keys at any time.</li>
-					</ul>
-					<ul>
-						<li>Click <a href="https://link.springer.com/article/10.1023/A:1007396710653" target="_blank">here</a> to read more about the AI's algorithm.</li>
-						<li>Click <a href="https://github.com/greg-rychlewski/mind-reader" target="_blank">here</a> for the Github repository to this game.</li>
-					</ul>
-				</div>
-				<div id="gameover">
-					<h3 id="winner"></h3>
-					<div id="new-game" onclick="newGame()">Play Again</div>
-				</div>
+			<div id="rules-container">
+				<h2>Mind Reader</h3>
+				<p>
+					Press the left and right arrow keys. The AI will try to predict your next key stroke. The AI's ball (grey) shrinks if it predicts correctly. Your ball (blue) shrinks if it's wrong. The first to make their ball completely disappear wins. You may start pressing the keys at any time.
+				</p>
 			</div>
 
 			<div id="player-container">
 				<div id="computer" class="player-group">
-					<div id="computer-sphere" class="sphere">
-						<div id="computer-shadow" class="shadow"></div>
+					<div class="sphere">
+						<div id="computer-fill" class="fill"></div>
+						<div class="cover"></div>
 					</div>
+					<div id="computer-shadow" class="shadow"></div>
 				</div>
 
 				<div id="human" class="player-group">
-					<div id="human-sphere" class="sphere">
-						<div id="human-shadow" class="shadow"></div>
+					<div class="sphere">
+						<div id="human-fill" class="fill"></div>
+						<div class="cover"></div>
 					</div>
+					<div id="human-shadow" class="shadow"></div>
 				</div>
 			</div>
 
 			<div id="prediction-container">
-				<div id="toggle-prediction" onclick="togglePrediction()">
-					Show AI's Next Prediction
-				</div>
-				<div id="next-predicted-value"></div>
+				<span id="button-label">Show AI's Prediction</span>
+				<span id="next-prediction"></span>
+			</div>
+
+			<div id="gameover-container">
+				<h2 id="winner"></h2>
+				<p id="new-game" onclick="newGame()">Play Again</p>
 			</div>
 		</div>
 

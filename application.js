@@ -5,26 +5,21 @@
 ///////////////////////////////////////////////
 
 var maxWins = 100;
-var rulesDiv = document.getElementById("rules");
-var gameoverDiv = document.getElementById("gameover");
+var gameoverDiv = document.getElementById("gameover-container");
 var winnerDiv = document.getElementById("winner");
-var nextPredictionDiv = document.getElementById("next-predicted-value");
-var togglePredictionDiv = document.getElementById("toggle-prediction");
+var showPredictionButton = document.getElementById("prediction-container");
+var nextPredictionDiv = document.getElementById("next-prediction");
 var computer = {
-	sphereDiv: document.getElementById("computer-sphere"),
+	fillDiv: document.getElementById("computer-fill"),
 	shadowDiv: document.getElementById("computer-shadow"),
-	prediction: null,
+	prediction: "",
 	wins: 0,
 };
 var human = {
-	sphereDiv: document.getElementById("human-sphere"),
+	fillDiv: document.getElementById("human-fill"),
 	shadowDiv: document.getElementById("human-shadow"),
 	wins: 0,
 };
-var toggleMessage = {
-	show: "Hide AI's Next Prediction",
-	hide: "Show AI's Next Prediction"
-}
 
 ///////////////////////////////////////////////
 //                                           //
@@ -46,11 +41,8 @@ function resetGame(){
 	computer.wins = 0;
 	human.wins = 0;
 	hideWinnerMessage();
-	resizeSphere(human, 100);
-	resizeSphere(computer, 100);
-	if (togglePredictionDiv.innerHTML == toggleMessage.show){
-		togglePrediction()
-	}
+	fillSphere(human, 0);
+	fillSphere(computer, 0);
 }
 
 function newGame(){
@@ -65,25 +57,13 @@ function showWinnerMessage(){
 		winnerDiv.innerHTML = "You Win";
 	}
 
-	rulesDiv.style.display = "none";
 	gameoverDiv.style.display = "block";
+	showPredictionButton.style.display = "none";
 }
 
 function hideWinnerMessage(){
 	gameoverDiv.style.display = "none";
-	rulesDiv.style.display = "inline-block";
-}
-
-function togglePrediction(){
-	var showPrediction = (togglePredictionDiv.innerHTML == toggleMessage.show);
-
-	if (showPrediction){
-		togglePredictionDiv.innerHTML = toggleMessage.hide;
-		nextPredictionDiv.style.opacity = 0;
-	}else{
-		togglePredictionDiv.innerHTML = toggleMessage.show;
-		nextPredictionDiv.style.opacity = 1;
-	}
+	showPredictionButton.style.display = "block";
 }
 
 function formatPrediction(value){
@@ -98,7 +78,6 @@ function formatPrediction(value){
 
 function updatePrediction(){
 	if (gameOver()){
-		computer.prediction = null;
 		nextPredictionDiv.innerHTML = "";
 	}else{
 		computer.prediction = ai.predict();
@@ -116,19 +95,17 @@ function gameOver(){
 	return human.wins == maxWins || computer.wins == maxWins
 }
 
-function resizeSphere(player, newSize){
-	player.sphereDiv.style.width = newSize + "px";
-	player.sphereDiv.style.height = newSize + "px";
-	player.shadowDiv.style.width = newSize + "%";
+function fillSphere(player, newSize){
+	player.fillDiv.style.height = newSize + "px";
 }
 
 function updateScore(humanMove, predictedMove){
 	if (humanMove == predictedMove){
 		computer.wins++;
-		resizeSphere(computer, 100 - computer.wins);
+		fillSphere(computer, computer.wins);
 	}else{
 		human.wins++;
-		resizeSphere(human, 100 - human.wins);
+		fillSphere(human, human.wins);
 	}
 }
 
