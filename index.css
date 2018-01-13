@@ -33,7 +33,7 @@ h2{
 /* Rules */
 #rules-container{
 	position: relative;
-	width: 90%;
+	width: 80%;
 	max-width: 800px;
 	left: 50%;
 	transform: translateX(-50%);
@@ -175,11 +175,11 @@ h2{
 }
 
 /* Responsiveness */
-@media screen and (max-width: 304px){
+@media screen and (max-width: 321px){
 	.player-group{
 		position: relative;
 		display: inline-block;
-		width: 125px;
+		width: 120px;
 		perspective: 500px;
 		-webkit-perspective: 500px;
 		-moz-perspective: 500px;
