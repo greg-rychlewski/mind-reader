@@ -13,10 +13,6 @@
 	user-select: none; 
 }
 
-body{
-	touch-action: manipulation;
-}
-
 p, h2, span, a{
 	color: #444;
 }
@@ -221,5 +217,10 @@ h2{
 
 	#rules-container .mobile{
 		display: block;
+	}
+
+	.player-group{
+		touch-action: manipulation;
+  		cursor: pointer;
 	}
 }
