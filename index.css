@@ -13,6 +13,10 @@
 	user-select: none; 
 }
 
+body{
+	touch-action: manipulation;
+}
+
 p, h2, span, a{
 	color: #444;
 }

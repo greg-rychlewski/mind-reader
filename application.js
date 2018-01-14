@@ -37,14 +37,14 @@ var human = {
 function enableGame(){
 	document.onkeyup = nextMove;
 	document.getElementById("new-game").onclick = newGame;
-	document.getElementById("computer").onclick = function(){mobileMove("L")};
-	document.getElementById("human").onclick = function(){mobileMove("R")};
+	document.getElementById("computer").ontouchstart = function(){mobileMove("L")};
+	document.getElementById("human").ontouchstart = function(){mobileMove("R")};
 }
 
 function disableGame(){
 	document.onkeyup = null;
-	document.getElementById("computer").onclick = null;
-	document.getElementById("human").onclick = null;
+	document.getElementById("computer").ontouchstart = null;
+	document.getElementById("human").ontouchstart = null;
 }
 
 function resetGame(){
