@@ -5,6 +5,7 @@
 ///////////////////////////////////////////////
 
 var maxWins = 100;
+var initialShadowAlpha = 0.1
 var gameoverDiv = document.getElementById("gameover-container");
 var winnerDiv = document.getElementById("winner");
 var showPredictionButton = document.getElementById("prediction-container");
@@ -12,13 +13,23 @@ var nextPredictionDiv = document.getElementById("next-prediction");
 var computer = {
 	fillDiv: document.getElementById("computer-fill"),
 	shadowDiv: document.getElementById("computer-shadow"),
+	shadowAlpha: initialShadowAlpha,
 	prediction: "",
 	wins: 0,
+	resetScore: function(){
+		computer.wins = 0;
+		computer.shadowAlpha = initialShadowAlpha;
+	}
 };
 var human = {
 	fillDiv: document.getElementById("human-fill"),
 	shadowDiv: document.getElementById("human-shadow"),
+	shadowAlpha: initialShadowAlpha,
 	wins: 0,
+	resetScore: function(){
+		human.wins = 0;
+		human.shadowAlpha = initialShadowAlpha;
+	}
 };
 
 ///////////////////////////////////////////////
@@ -38,11 +49,11 @@ function disableGame(){
 
 function resetGame(){
 	ai.reset();
-	computer.wins = 0;
-	human.wins = 0;
+	human.resetScore();
+	computer.resetScore();
 	hideWinnerMessage();
-	fillSphere(human, 0);
-	fillSphere(computer, 0);
+	fillSphere(human, human.wins, human.shadowAlpha);
+	fillSphere(computer, computer.wins, computer.shadowAlpha);
 }
 
 function newGame(){
@@ -95,17 +106,20 @@ function gameOver(){
 	return human.wins == maxWins || computer.wins == maxWins
 }
 
-function fillSphere(player, newSize){
+function fillSphere(player, newSize, newAlpha){
+	player.shadowDiv.style.opacity = newAlpha;
 	player.fillDiv.style.height = newSize + "px";
 }
 
 function updateScore(humanMove, predictedMove){
 	if (humanMove == predictedMove){
 		computer.wins++;
-		fillSphere(computer, computer.wins);
+		computer.shadowAlpha += 0.015;
+		fillSphere(computer, computer.wins, computer.shadowAlpha);
 	}else{
 		human.wins++;
-		fillSphere(human, human.wins);
+		human.shadowAlpha += 0.02
+		fillSphere(human, human.wins, human.shadowAlpha);
 	}
 }
 
