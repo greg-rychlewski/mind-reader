@@ -7,9 +7,14 @@
 		<div id="main-container">
 			<div id="rules-container">
 				<h2>Mind Reader</h3>
-				<p>
-					This game is played by pressing the left and right arrow keys on your keyboard. An AI will try to guess which key you are going to press next based on patterns it perceives in your behaviour. If the AI guesses correctly, it receives one point. If it guesses incorrectly, you receive one point. Make your moves as random as possible to stump the AI. It is much harder than you might expect. 
-				</p>
+				<div>
+					<p class="desktop">
+						This game is played by pressing the left and right arrow keys on your keyboard. An AI will try to guess which key you are going to press next based on patterns it perceives in your behaviour. If the AI guesses correctly, it receives one point. If it guesses incorrectly, you receive one point. Make your moves as random as possible to stump the AI. It is much harder than you might expect. 
+					</p>
+					<p class="mobile">
+						This game is played by tapping the left and right balls below. An AI will try to guess which ball you are going to tap next based on patterns it perceives in your behaviour. If the AI guesses correctly, it receives one point. If it guesses incorrectly, you receive one point. Make your moves as random as possible to stump the AI. It is much harder than you might expect. 
+					</p>
+				</div>
 				<p>
 					Each time the AI gets a point, the left ball fills up. Each time you get a point, the right ball fills up. Whoever's ball fills up first wins.
 				</p>
@@ -36,14 +41,14 @@
 				</div>
 			</div>
 
-			<div id="prediction-container">
+			<div id="prediction-container" ontouchstart="">
 				<span id="button-label">Show AI's Prediction</span>
 				<span id="next-prediction"></span>
 			</div>
 
 			<div id="gameover-container">
 				<h2 id="winner"></h2>
-				<p id="new-game" onclick="newGame()">Play Again</p>
+				<p id="new-game">Play Again</p>
 			</div>
 		</div>
 

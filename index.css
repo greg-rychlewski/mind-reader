@@ -51,12 +51,16 @@ h2{
 	text-align: justify;
 }
 
-#rules-container p:nth-child(2){
+#rules-container div:nth-child(2){
 	margin-top: 45px;
 }
 
 #rules-container p:not(:nth-child(2)){
 	margin-top: 15px;
+}
+
+#rules-container .mobile{
+	display: none;
 }
 
 /* Player score display */
@@ -134,23 +138,6 @@ h2{
 	-ms-transform: rotateX(90deg) translateX(-50%);
 }
 
-/* Responsiveness */
-@media screen and (max-width: 321px){
-	.player-group{
-		position: relative;
-		display: inline-block;
-		width: 120px;
-		perspective: 500px;
-		-webkit-perspective: 500px;
-		-moz-perspective: 500px;
-		-ms-perspective: 500px;
-	  	perspective-origin: 100% 100%;
-	  	-webkit-perspective-origin: 100% 100%;
-	  	-moz-perspective-origin: 100% 100%;
-	  	-ms-perspective-origin: 100% 100%;
-	}	
-}
-
 /* AI prediction display */
 #prediction-container{
 	position: relative;
@@ -173,11 +160,11 @@ h2{
 	display: none;
 }
 
-#prediction-container:hover #next-prediction{
+#prediction-container:hover #next-prediction, #prediction-container:active #next-prediction{
 	display: inline;
 }
 
-#prediction-container:hover #button-label{
+#prediction-container:hover #button-label, #prediction-container:active #button-label{
 	display: none;
 }
 
@@ -204,4 +191,31 @@ h2{
 	font-size: 1.1em;
 	margin-top: 15px;
 	cursor: pointer;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 321px){
+	.player-group{
+		position: relative;
+		display: inline-block;
+		width: 120px;
+		perspective: 500px;
+		-webkit-perspective: 500px;
+		-moz-perspective: 500px;
+		-ms-perspective: 500px;
+	  	perspective-origin: 100% 100%;
+	  	-webkit-perspective-origin: 100% 100%;
+	  	-moz-perspective-origin: 100% 100%;
+	  	-ms-perspective-origin: 100% 100%;
+	}	
+}
+
+@media screen and (max-width: 425px){
+	#rules-container .desktop{
+		display: none;
+	}
+
+	#rules-container .mobile{
+		display: block;
+	}
 }

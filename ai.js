@@ -154,8 +154,7 @@ var ai = (function (){
 		gameTree = new Tree("", null);
 	}
 
-
-	// Public API
+	// Public methods
 	return {
 		predict: getPrediction,
 		reset: resetAI,
@@ -164,5 +163,4 @@ var ai = (function (){
 			updateHistory(playerMove);
 		}
 	}
-	
 })()
