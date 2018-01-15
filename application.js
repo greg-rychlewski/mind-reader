@@ -164,7 +164,7 @@ function mobileMove(humanMove){
 	disableGame();
 	updateScore(humanMove, computer.prediction);
 	ai.update(humanMove);
-
+	
 	if (gameOver()){
 		showWinnerMessage();
 	}else{

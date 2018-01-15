@@ -43,7 +43,7 @@ var ai = (function (){
 			for (var i = 0; i < this.children.length; i++){
 				var child = this.children[i];
 
-				if (path.startsWith(child.path)){
+				if (path.indexOf(child.path) == 0){
 					return child.search(path);
 				}
 			}
@@ -98,7 +98,7 @@ var ai = (function (){
 
 	// Helper functions
 	function onPath(node){
-		if (history.startsWith(node.path)){
+		if (history.indexOf(node.path) == 0){
 			return false;
 		}
 
