@@ -183,6 +183,9 @@ h2{
 	position: relative;
 	left: 50%;
 	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
 	width: 200px;
 	padding: 10px 15px;
 	border: 1px solid #ccc;
