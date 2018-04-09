@@ -92,6 +92,7 @@ h2{
 	-ms-transform: translateX(-50%);
 	width: 100px;
 	height: 100px;
+	border: 1px solid #e2e2e2;
 	border-radius: 50%;
 	overflow: hidden;
 }
