@@ -4,27 +4,27 @@
 //                                           //
 ///////////////////////////////////////////////
 
-var maxWins = 100;
+var maxScore = 100;
 var initialShadowAlpha = 0.1
 var computer = {
 	fillDiv: document.getElementById("computer-fill"),
 	shadowDiv: document.getElementById("computer-shadow"),
 	shadowAlpha: initialShadowAlpha,
 	prediction: "",
-	wins: 0,
+	score: 0,
 	resetScore: function(){
-		computer.wins = 0;
-		computer.shadowAlpha = initialShadowAlpha;
+		this.score= 0;
+		this.shadowAlpha = initialShadowAlpha;
 	}
 };
 var human = {
 	fillDiv: document.getElementById("human-fill"),
 	shadowDiv: document.getElementById("human-shadow"),
 	shadowAlpha: initialShadowAlpha,
-	wins: 0,
+	score: 0,
 	resetScore: function(){
-		human.wins = 0;
-		human.shadowAlpha = initialShadowAlpha;
+		this.score = 0;
+		this.shadowAlpha = initialShadowAlpha;
 	}
 };
 
@@ -52,8 +52,10 @@ function resetGame(){
 	human.resetScore();
 	computer.resetScore();
 	hideWinnerMessage();
-	fillSphere(human, human.wins, human.shadowAlpha);
-	fillSphere(computer, computer.wins, computer.shadowAlpha);
+	fillSphere(human, human.score, human.shadowAlpha);
+	fillSphere(computer, computer.score, computer.shadowAlpha);
+	document.getElementById("human-score").innerHTML = human.score;
+	document.getElementById("computer-score").innerHTML = computer.score;
 }
 
 function newGame(){
@@ -63,9 +65,9 @@ function newGame(){
 }
 
 function showWinnerMessage(){
-	if (computer.wins == maxWins){
+	if (computer.score == maxScore){
 		document.getElementById("winner").innerHTML = "AI Wins";
-	}else if (human.wins == maxWins){
+	}else if (human.score == maxScore){
 		document.getElementById("winner").innerHTML = "You Win";
 	}
 
@@ -100,7 +102,7 @@ function updatePrediction(){
 ///////////////////////////////////////////////
 
 function gameOver(){
-	return human.wins == maxWins || computer.wins == maxWins
+	return human.score == maxScore || computer.score == maxScore
 }
 
 function fillSphere(player, newSize, newAlpha){
@@ -110,13 +112,15 @@ function fillSphere(player, newSize, newAlpha){
 
 function updateScore(humanMove, predictedMove){
 	if (humanMove == predictedMove){
-		computer.wins++;
+		computer.score++;
 		computer.shadowAlpha += 0.015;
-		fillSphere(computer, computer.wins, computer.shadowAlpha);
+		fillSphere(computer, computer.score, computer.shadowAlpha);
+		document.getElementById("computer-score").innerHTML = computer.score;
 	}else{
-		human.wins++;
+		human.score++;
 		human.shadowAlpha += 0.02;
-		fillSphere(human, human.wins, human.shadowAlpha);
+		fillSphere(human, human.score, human.shadowAlpha);
+		document.getElementById("human-score").innerHTML = human.score;
 	}
 }
 

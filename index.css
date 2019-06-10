@@ -55,12 +55,16 @@ h2{
 	margin-top: 45px;
 }
 
-#rules-container p:not(:nth-child(2)){
+#rules-container p:not(:nth-child(1)){
 	margin-top: 15px;
 }
 
 #rules-container .mobile{
 	display: none;
+}
+
+.rules-title {
+	font-weight: 550;
 }
 
 /* Player score display */
@@ -137,6 +141,10 @@ h2{
 	-webkit-transform: rotateX(90deg) translateX(-50%);
 	-moz-transform: rotateX(90deg) translateX(-50%);
 	-ms-transform: rotateX(90deg) translateX(-50%);
+}
+
+.score-title {
+	padding-top: 10px;
 }
 
 /* AI prediction display */
@@ -221,6 +229,10 @@ h2{
 
 	#rules-container .mobile{
 		display: block;
+	}
+
+	.player-group {
+		padding: 0 20px;
 	}
 
 	.player-group{

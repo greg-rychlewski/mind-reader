@@ -8,19 +8,13 @@
 			<div id="rules-container">
 				<h2>Mind Reader</h3>
 				<div>
-					<p class="desktop">
-						This game is played by pressing the left and right arrow keys on your keyboard. An AI will try to guess which key you are going to press next based on patterns it perceives in your behaviour. If the AI guesses correctly, it receives one point. If it guesses incorrectly, you receive one point. Make your moves as random as possible to stump the AI. It is much harder than you might expect. 
-					</p>
-					<p class="mobile">
-						This game is played by tapping the left and right balls below. An AI will try to guess which ball you are going to tap next based on patterns it perceives in your behaviour. If the AI guesses correctly, it receives one point. If it guesses incorrectly, you receive one point. Make your moves as random as possible to stump the AI. It is much harder than you might expect. 
-					</p>
+					<p class="rules-title">Instructions</p>
+					<p class="desktop">Press the left and right arrow keys on your keyboard and an AI will try to guess which key you are going to press next.</p>
+					<p class="mobile">Tap the left and right side of our screen and an AI will try to guess which side you are going to tap next.</p> 
+					<p class="rules-body">The AI guesses based on patterns it perceives in your behaviour. Make your moves as random as possible to stump it.</p>
+					<p class="rules-body">Click <a href="https://github.com/greg-rychlewski/mind-reader" target="_blank">here</a> for the github repository to this game</p>
 				</div>
-				<p>
-					Each time the AI gets a point, the left ball fills up. Each time you get a point, the right ball fills up. Whoever's ball fills up first wins.
-				</p>
-				<p>
-					Click <a href="https://github.com/greg-rychlewski/mind-reader" target="_blank">here</a> for the github repository to this game.
-				</p>
+				
 			</div>
 
 			<div id="player-container">
@@ -30,6 +24,8 @@
 						<div class="cover"></div>
 					</div>
 					<div id="computer-shadow" class="shadow"></div>
+					<p class="score-title">AI Score</p>
+					<p id="computer-score">0</p>
 				</div>
 
 				<div id="human" class="player-group">
@@ -38,6 +34,8 @@
 						<div class="cover"></div>
 					</div>
 					<div id="human-shadow" class="shadow"></div>
+					<p class="score-title">Your Score</p>
+					<p id="human-score">0</p>
 				</div>
 			</div>
 
